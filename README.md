@@ -52,3 +52,5 @@ solo-project
 - TypeOrm
 - TypeGraphQL
 - Jest
+
+fff
