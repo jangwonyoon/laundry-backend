@@ -4,9 +4,10 @@ import { CoreEntity } from 'src/common/entities/core.entity';
 import {
   Field,
   ObjectType,
-  InputType,
   registerEnumType,
+  InputType,
 } from '@nestjs/graphql';
+import { IsString, IsEnum } from 'class-validator';
 
 /* 로그인시 확인 역할  */
 
@@ -27,21 +28,26 @@ registerEnumType(UserRole, { name: 'UserRole' });
 export class User extends CoreEntity {
   @Column()
   @Field((type) => String)
+  @IsString()
   email: string;
 
   @Column()
   @Field((type) => String)
+  @IsString()
   username: string;
 
   @Column()
   @Field((type) => String)
+  @IsString()
   password: string;
 
   @Column()
   @Field((type) => String)
+  @IsString()
   phone: string;
 
   @Column({ type: 'enum', enum: UserRole })
   @Field((type) => UserRole)
+  @IsEnum(UserRole)
   role: UserRole;
 }
